@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "SkillPocket"
+  },
+  "nav": {
+    "mySkills": "我的 Skills",
+    "store": "商店",
+    "create": "创建",
+    "settings": "设置"
+  },
+  "mySkills": {
+    "title": "我的 Skills",
+    "searchPlaceholder": "搜索 skills...",
+    "gridView": "网格视图",
+    "listView": "列表视图",
+    "all": "全部",
+    "favorites": "收藏",
+    "tags": "标签",
+    "recentlyUsed": "最近使用",
+    "recentlyInstalled": "最近安装",
+    "newTag": "新建标签",
+    "official": "官方 Skills",
+    "empty": {
+      "title": "还没有 Skills",
+      "description": "在 ~/.claude/skills 目录中创建你的第一个 Skill"
+    },
+    "noMatch": {
+      "title": "没有找到匹配的 Skills",
+      "description": "尝试其他搜索词或标签"
+    },
+    "usedTimes": "使用 {{count}} 次"
+  },
+  "skillDetail": {
+    "source": "来源",
+    "path": "路径",
+    "local": "本地",
+    "official": "官方",
+    "marketplace": "商店",
+    "usedTimes": "已使用 {{count}} 次",
+    "installedAt": "安装于",
+    "description": "描述",
+    "content": "完整内容",
+    "actions": {
+      "favorite": "收藏",
+      "unfavorite": "取消收藏",
+      "editTags": "编辑标签",
+      "regenerateCover": "重新生成封面",
+      "openFile": "打开文件",
+      "uninstall": "卸载"
+    }
+  },
+  "tags": {
+    "editTitle": "编辑标签",
+    "createTitle": "新建标签",
+    "name": "名称",
+    "namePlaceholder": "输入标签名称",
+    "emoji": "图标",
+    "emojiPlaceholder": "选择一个 emoji",
+    "color": "颜色",
+    "parent": "父标签",
+    "parentPlaceholder": "选择父标签（可选）",
+    "noParent": "无（顶级标签）",
+    "cancel": "取消",
+    "save": "保存",
+    "create": "创建",
+    "delete": "删除标签",
+    "deleteConfirm": "确定要删除标签 \"{{name}}\" 吗？此操作不可撤销。"
+  },
+  "create": {
+    "title": "创建 Skill",
+    "subtitle": "通过命令行创建你的自定义 Skill",
+    "step1": {
+      "title": "创建 Skill 目录",
+      "command": "mkdir -p ~/.claude/skills/my-skill"
+    },
+    "step2": {
+      "title": "创建 SKILL.md 文件"
+    },
+    "step3": {
+      "title": "在「我的 Skills」中查看",
+      "description": "创建完成后，回到「我的 Skills」页面即可看到新创建的 Skill"
+    },
+    "quickActions": "快捷操作",
+    "openSkillsDir": "打开 Skills 目录",
+    "officialDocs": "官方文档",
+    "tips": {
+      "title": "提示",
+      "tip1": "SKILL.md 文件必须包含 YAML frontmatter（name 和 description）",
+      "tip2": "description 描述触发条件，Claude 会根据此决定何时使用",
+      "tip3": "可以使用 Claude CLI 辅助生成："
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "subtitle": "配置你的 SkillPocket",
+    "apiKey": {
+      "title": "Claude API Key",
+      "description": "用于 AI 生成封面图和从 URL 提取内容",
+      "placeholder": "sk-ant-...",
+      "save": "保存",
+      "saved": "已保存",
+      "getKey": "获取 API Key"
+    },
+    "skillsDir": {
+      "title": "Skills 目录",
+      "personal": "个人 Skills 目录",
+      "plugins": "插件 Skills 目录",
+      "modify": "修改",
+      "autoDetect": "自动检测"
+    },
+    "theme": {
+      "title": "主题",
+      "light": "亮色",
+      "dark": "暗色",
+      "system": "跟随系统"
+    },
+    "language": {
+      "title": "语言",
+      "zh": "中文",
+      "en": "English"
+    },
+    "data": {
+      "title": "数据管理",
+      "import": "导入配置",
+      "export": "导出配置",
+      "description": "导出包括标签、收藏和设置。Skills 文件存储在本地目录中。",
+      "importSuccess": "导入成功",
+      "importError": "导入失败：文件格式错误",
+      "exportSuccess": "导出成功"
+    },
+    "about": {
+      "version": "版本",
+      "madeFor": "Made for Claude users"
+    }
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "close": "关闭"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "app": {
+    "name": "SkillPocket"
+  },
+  "nav": {
+    "mySkills": "My Skills",
+    "store": "Store",
+    "create": "Create",
+    "settings": "Settings"
+  },
+  "mySkills": {
+    "title": "My Skills",
+    "searchPlaceholder": "Search skills...",
+    "gridView": "Grid View",
+    "listView": "List View",
+    "all": "All",
+    "favorites": "Favorites",
+    "tags": "Tags",
+    "recentlyUsed": "Recently Used",
+    "recentlyInstalled": "Recently Installed",
+    "newTag": "New Tag",
+    "official": "Official Skills",
+    "empty": {
+      "title": "No Skills Yet",
+      "description": "Create your first Skill in ~/.claude/skills directory"
+    },
+    "noMatch": {
+      "title": "No Matching Skills",
+      "description": "Try different search terms or tags"
+    },
+    "usedTimes": "Used {{count}} times"
+  },
+  "skillDetail": {
+    "source": "Source",
+    "path": "Path",
+    "local": "Local",
+    "official": "Official",
+    "marketplace": "Store",
+    "usedTimes": "Used {{count}} times",
+    "installedAt": "Installed at",
+    "description": "Description",
+    "content": "Full Content",
+    "actions": {
+      "favorite": "Favorite",
+      "unfavorite": "Unfavorite",
+      "editTags": "Edit Tags",
+      "regenerateCover": "Regenerate Cover",
+      "openFile": "Open File",
+      "uninstall": "Uninstall"
+    }
+  },
+  "tags": {
+    "editTitle": "Edit Tag",
+    "createTitle": "New Tag",
+    "name": "Name",
+    "namePlaceholder": "Enter tag name",
+    "emoji": "Icon",
+    "emojiPlaceholder": "Choose an emoji",
+    "color": "Color",
+    "parent": "Parent Tag",
+    "parentPlaceholder": "Select parent tag (optional)",
+    "noParent": "None (Top Level)",
+    "cancel": "Cancel",
+    "save": "Save",
+    "create": "Create",
+    "delete": "Delete Tag",
+    "deleteConfirm": "Are you sure you want to delete tag \"{{name}}\"? This action cannot be undone."
+  },
+  "create": {
+    "title": "Create Skill",
+    "subtitle": "Create your custom Skill via command line",
+    "step1": {
+      "title": "Create Skill Directory",
+      "command": "mkdir -p ~/.claude/skills/my-skill"
+    },
+    "step2": {
+      "title": "Create SKILL.md File"
+    },
+    "step3": {
+      "title": "View in My Skills",
+      "description": "After creation, go back to My Skills page to see your new Skill"
+    },
+    "quickActions": "Quick Actions",
+    "openSkillsDir": "Open Skills Directory",
+    "officialDocs": "Official Docs",
+    "tips": {
+      "title": "Tips",
+      "tip1": "SKILL.md file must contain YAML frontmatter (name and description)",
+      "tip2": "description defines trigger conditions, Claude uses it to decide when to use the skill",
+      "tip3": "You can use Claude CLI to generate:"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure your SkillPocket",
+    "apiKey": {
+      "title": "Claude API Key",
+      "description": "Used for AI cover generation and URL content extraction",
+      "placeholder": "sk-ant-...",
+      "save": "Save",
+      "saved": "Saved",
+      "getKey": "Get API Key"
+    },
+    "skillsDir": {
+      "title": "Skills Directory",
+      "personal": "Personal Skills Directory",
+      "plugins": "Plugin Skills Directory",
+      "modify": "Modify",
+      "autoDetect": "Auto Detect"
+    },
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "language": {
+      "title": "Language",
+      "zh": "中文",
+      "en": "English"
+    },
+    "data": {
+      "title": "Data Management",
+      "import": "Import Config",
+      "export": "Export Config",
+      "description": "Export includes tags, favorites, and settings. Skills files are stored in local directory.",
+      "importSuccess": "Import successful",
+      "importError": "Import failed: Invalid file format",
+      "exportSuccess": "Export successful"
+    },
+    "about": {
+      "version": "Version",
+      "madeFor": "Made for Claude users"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close"
+  }
+}
