@@ -95,10 +95,10 @@ Download the latest release for your platform:
 
 | Platform | Download |
 |----------|----------|
-| macOS (Apple Silicon) | [SkillPocket_x.x.x_aarch64.dmg](https://github.com/anthropics/skill-pocket/releases) |
-| macOS (Intel) | [SkillPocket_x.x.x_x64.dmg](https://github.com/anthropics/skill-pocket/releases) |
-| Windows | [SkillPocket_x.x.x_x64.msi](https://github.com/anthropics/skill-pocket/releases) |
-| Linux | [SkillPocket_x.x.x_amd64.deb](https://github.com/anthropics/skill-pocket/releases) |
+| macOS (Apple Silicon) | [SkillPocket_0.1.0_aarch64.dmg](https://github.com/xmqywx/skill-pocket/releases) |
+| macOS (Intel) | [SkillPocket_0.1.0_x64.dmg](https://github.com/xmqywx/skill-pocket/releases) |
+| Windows | [SkillPocket_0.1.0_x64.msi](https://github.com/xmqywx/skill-pocket/releases) |
+| Linux | [SkillPocket_0.1.0_amd64.deb](https://github.com/xmqywx/skill-pocket/releases) |
 
 ### Build from Source
 
@@ -109,7 +109,7 @@ Prerequisites:
 
 ```bash
 # Clone the repository
-git clone https://github.com/anthropics/skill-pocket.git
+git clone https://github.com/xmqywx/skill-pocket.git
 cd skill-pocket
 
 # Install dependencies
@@ -191,6 +191,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <p align="center">
   Made with ❤️ for the Claude community
   <br>
-  <a href="https://github.com/anthropics/skill-pocket/issues">Report Bug</a> •
-  <a href="https://github.com/anthropics/skill-pocket/issues">Request Feature</a>
+  <a href="https://github.com/xmqywx/skill-pocket/issues">Report Bug</a> •
+  <a href="https://github.com/xmqywx/skill-pocket/issues">Request Feature</a>
 </p>
