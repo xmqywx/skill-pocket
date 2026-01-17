@@ -1,37 +1,44 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Premium gradient - deep purple to vibrant violet -->
+    <!-- Premium gradient -->
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7C3AED"/>
-      <stop offset="100%" style="stop-color:#4F46E5"/>
+      <stop offset="0%" style="stop-color:#6366F1"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
     </linearGradient>
 
-    <!-- Subtle inner glow -->
-    <linearGradient id="innerGlow" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#A78BFA;stop-opacity:0.4"/>
-      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:0"/>
+    <!-- Top highlight -->
+    <linearGradient id="topHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A5B4FC;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#6366F1;stop-opacity:0"/>
     </linearGradient>
 
-    <!-- Pocket gradient - frosted glass effect -->
+    <!-- Crystal/Skill gradient -->
+    <linearGradient id="crystalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0ABFC"/>
+      <stop offset="50%" style="stop-color:#C084FC"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+
+    <!-- Crystal inner glow -->
+    <linearGradient id="crystalInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#E9D5FF"/>
+    </linearGradient>
+
+    <!-- Pocket gradient -->
     <linearGradient id="pocketGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.95"/>
-      <stop offset="100%" style="stop-color:#F8FAFC;stop-opacity:0.85"/>
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F1F5F9"/>
     </linearGradient>
 
-    <!-- Shadow for depth -->
-    <filter id="pocketShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#4F46E5" flood-opacity="0.3"/>
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#4F46E5" flood-opacity="0.4"/>
     </filter>
 
-    <!-- Glow for the orb -->
-    <radialGradient id="orbGradient" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#C4B5FD"/>
-      <stop offset="70%" style="stop-color:#8B5CF6"/>
-      <stop offset="100%" style="stop-color:#7C3AED"/>
-    </radialGradient>
-
-    <filter id="orbGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="15" result="blur"/>
+    <!-- Crystal glow -->
+    <filter id="crystalGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -39,57 +46,82 @@
     </filter>
   </defs>
 
-  <!-- Background - smooth rounded square -->
-  <rect x="0" y="0" width="1024" height="1024" rx="228" fill="url(#bgGradient)"/>
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="224" fill="url(#bgGradient)"/>
+  <rect width="1024" height="500" rx="224" fill="url(#topHighlight)"/>
 
-  <!-- Inner highlight -->
-  <rect x="0" y="0" width="1024" height="512" rx="228" fill="url(#innerGlow)"/>
-
-  <!-- Minimalist pocket shape -->
-  <g filter="url(#pocketShadow)">
-    <!-- Pocket body -->
-    <path d="M272 340
-             L272 700
-             C272 744, 308 780, 352 780
-             L672 780
-             C716 780, 752 744, 752 700
-             L752 340
-             C752 296, 716 260, 672 260
-             L352 260
-             C308 260, 272 296, 272 340Z"
+  <!-- Pocket base -->
+  <g filter="url(#shadow)">
+    <path d="M260 420
+             L260 720
+             C260 760, 292 792, 332 792
+             L692 792
+             C732 792, 764 760, 764 720
+             L764 420
+             C764 380, 732 348, 692 348
+             L332 348
+             C292 348, 260 380, 260 420Z"
           fill="url(#pocketGradient)"/>
 
-    <!-- Pocket opening - subtle fold line -->
-    <path d="M272 380
-             C272 380, 400 420, 512 420
-             C624 420, 752 380, 752 380
-             L752 340
-             C752 296, 716 260, 672 260
-             L352 260
-             C308 260, 272 296, 272 340
-             Z"
-          fill="white"
-          fill-opacity="0.5"/>
+    <!-- Pocket fold -->
+    <path d="M260 450
+             Q512 500, 764 450
+             L764 420
+             C764 380, 732 348, 692 348
+             L332 348
+             C292 348, 260 380, 260 420Z"
+          fill="white"/>
 
-    <!-- Pocket top edge highlight -->
-    <path d="M300 380 C300 380, 420 415, 512 415 C604 415, 724 380, 724 380"
-          stroke="white"
+    <!-- Pocket edge line -->
+    <path d="M290 448 Q512 490, 734 448"
+          stroke="#E2E8F0"
           stroke-width="3"
-          stroke-linecap="round"
-          fill="none"
-          opacity="0.8"/>
+          fill="none"/>
   </g>
 
-  <!-- Glowing orb - representing "skill/magic" -->
-  <g filter="url(#orbGlow)">
-    <circle cx="512" cy="580" r="85" fill="url(#orbGradient)"/>
-    <!-- Inner shine -->
-    <circle cx="490" cy="555" r="25" fill="white" fill-opacity="0.6"/>
+  <!-- Crystal/Diamond skill symbol - prominent -->
+  <g filter="url(#crystalGlow)" transform="translate(512, 520)">
+    <!-- Main crystal shape -->
+    <path d="M0 -160
+             L100 -40
+             L60 120
+             L0 160
+             L-60 120
+             L-100 -40
+             Z"
+          fill="url(#crystalGradient)"/>
+
+    <!-- Crystal highlight facet -->
+    <path d="M0 -160
+             L100 -40
+             L0 0
+             L-100 -40
+             Z"
+          fill="url(#crystalInner)"
+          opacity="0.9"/>
+
+    <!-- Crystal center line -->
+    <path d="M0 -160 L0 160"
+          stroke="white"
+          stroke-width="2"
+          opacity="0.5"/>
+
+    <!-- Crystal sparkle -->
+    <circle cx="-30" cy="-80" r="12" fill="white" opacity="0.9"/>
+    <circle cx="40" cy="-20" r="6" fill="white" opacity="0.6"/>
   </g>
 
-  <!-- Subtle floating particles -->
-  <circle cx="400" cy="520" r="6" fill="white" fill-opacity="0.7"/>
-  <circle cx="620" cy="540" r="4" fill="white" fill-opacity="0.5"/>
-  <circle cx="440" cy="660" r="5" fill="white" fill-opacity="0.4"/>
-  <circle cx="590" cy="680" r="3" fill="white" fill-opacity="0.3"/>
+  <!-- Floating sparkles around crystal -->
+  <g fill="white">
+    <circle cx="340" cy="480" r="6" opacity="0.8"/>
+    <circle cx="684" cy="500" r="5" opacity="0.6"/>
+    <circle cx="380" cy="680" r="4" opacity="0.5"/>
+    <circle cx="660" cy="660" r="4" opacity="0.4"/>
+  </g>
+
+  <!-- Small stars -->
+  <g fill="#F0ABFC">
+    <path transform="translate(300, 380) scale(0.4)" d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z"/>
+    <path transform="translate(724, 400) scale(0.3)" d="M0 -20 L5 -5 L20 0 L5 5 L0 20 L-5 5 L-20 0 L-5 -5 Z"/>
+  </g>
 </svg>
