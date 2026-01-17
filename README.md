@@ -14,6 +14,25 @@
 
 ---
 
+## Screenshots
+
+<p align="center">
+  <img src="screenshots/myskills.png" width="800" alt="My Skills">
+  <br><em>My Skills - Manage all your Claude Skills</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/icons.png" width="800" alt="Icons">
+  <br><em>Icons - Generate and manage custom SVG icons</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/setting.png" width="800" alt="Settings">
+  <br><em>Settings - Theme, language and data management</em>
+</p>
+
+---
+
 ## Features
 
 ### 📦 Manage Skills

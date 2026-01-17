@@ -23,6 +23,10 @@
   --color-popover: oklch(1 0 0);
   --color-popover-foreground: oklch(0.15 0.02 250);
 
+  /* Greenline icon colors - light mode */
+  --icon-stroke: #2D6A4F;
+  --icon-accent: #74C365;
+
   --radius-sm: 0.25rem;
   --radius-md: 0.375rem;
   --radius-lg: 0.5rem;
@@ -47,6 +51,10 @@
   --color-card-foreground: oklch(0.98 0.01 250);
   --color-popover: oklch(0.2 0.02 250);
   --color-popover-foreground: oklch(0.98 0.01 250);
+
+  /* Greenline icon colors - dark mode */
+  --icon-stroke: #FFFFFF;
+  --icon-accent: #00FFFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -67,6 +75,10 @@
     --color-card-foreground: oklch(0.98 0.01 250);
     --color-popover: oklch(0.2 0.02 250);
     --color-popover-foreground: oklch(0.98 0.01 250);
+
+    /* Greenline icon colors - dark mode (system preference) */
+    --icon-stroke: #FFFFFF;
+    --icon-accent: #00FFFF;
   }
 }
 

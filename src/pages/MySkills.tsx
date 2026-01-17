@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Heart } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { cn } from '@/lib/utils';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
@@ -360,13 +361,13 @@ export function MySkills() {
                   <button
                     onClick={(e) => toggleFavorite(skill.id, e)}
                     className={cn(
-                      'absolute top-2 right-2 p-1.5 rounded-full transition-colors z-10',
+                      'absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full transition-colors z-10',
                       skill.isFavorite
-                        ? 'text-red-500 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/30'
+                        ? 'text-red-500 bg-red-50 hover:bg-red-100 dark:bg-red-950 dark:hover:bg-red-900'
                         : 'text-muted-foreground opacity-0 group-hover:opacity-100 hover:bg-secondary'
                     )}
                   >
-                    <GreenlineIcon name={skill.isFavorite ? "heart" : "heartOutline"} size={16} />
+                    <Heart className={cn('w-4 h-4', skill.isFavorite && 'fill-current')} />
                   </button>
 
                   {/* Info */}

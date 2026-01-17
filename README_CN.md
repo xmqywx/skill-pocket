@@ -14,6 +14,25 @@
 
 ---
 
+## 应用截图
+
+<p align="center">
+  <img src="screenshots/myskills.png" width="800" alt="My Skills">
+  <br><em>我的 Skills - 管理所有 Claude Skills</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/icons.png" width="800" alt="Icons">
+  <br><em>图标 - 生成和管理自定义 SVG 图标</em>
+</p>
+
+<p align="center">
+  <img src="screenshots/setting.png" width="800" alt="Settings">
+  <br><em>设置 - 主题、语言和数据管理</em>
+</p>
+
+---
+
 ## 功能介绍
 
 ### 📦 管理 Skills

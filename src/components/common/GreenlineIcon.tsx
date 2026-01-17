@@ -348,10 +348,14 @@ export function GreenlineIcon({ name, className, size = 24 }: GreenlineIconProps
     return <div className={cn('bg-muted rounded', className)} style={{ width: size, height: size }} />;
   }
 
-  // Replace size in SVG
+  // Replace size and colors in SVG for theme support
   const processed = svgContent
     .replace(/width="64"/g, `width="${size}"`)
-    .replace(/height="64"/g, `height="${size}"`);
+    .replace(/height="64"/g, `height="${size}"`)
+    // Replace hardcoded colors with CSS variables for dark mode support
+    .replace(/stroke="#2D6A4F"/g, 'stroke="var(--icon-stroke)"')
+    .replace(/fill="#74C365"/g, 'fill="var(--icon-accent)"')
+    .replace(/fill="white"/g, 'fill="var(--color-background)"');
 
   return (
     <span

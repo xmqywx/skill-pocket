@@ -209,10 +209,10 @@ export function Icons() {
                     <button
                       key={`${icon.prefix}:${icon.name}`}
                       onClick={() => setSelectedIcon(icon)}
-                      className={cn('aspect-square flex items-center justify-center p-2 rounded-lg border transition-all hover:border-primary', selectedIcon?.name === icon.name ? 'border-primary bg-primary/10' : 'border-border')}
+                      className={cn('aspect-square flex items-center justify-center p-2 rounded-lg border transition-all hover:border-primary bg-white dark:bg-slate-100', selectedIcon?.name === icon.name ? 'border-primary ring-2 ring-primary/30' : 'border-border')}
                       title={icon.name}
                     >
-                      <img src={getIconSvgUrl(icon.prefix, icon.name)} alt={icon.name} className="w-6 h-6 dark:invert" loading="lazy" />
+                      <img src={getIconSvgUrl(icon.prefix, icon.name)} alt={icon.name} className="w-6 h-6" loading="lazy" />
                     </button>
                   ))}
                 </div>
@@ -220,8 +220,8 @@ export function Icons() {
             </div>
             {selectedIcon && (
               <div className="border-t border-border p-4 bg-card/50 flex items-center gap-4">
-                <div className="w-14 h-14 flex items-center justify-center bg-background rounded-lg border">
-                  <img src={getIconSvgUrl(selectedIcon.prefix, selectedIcon.name, 32)} alt={selectedIcon.name} className="w-8 h-8 dark:invert" />
+                <div className="w-14 h-14 flex items-center justify-center bg-background dark:bg-white rounded-lg border">
+                  <img src={getIconSvgUrl(selectedIcon.prefix, selectedIcon.name, 32)} alt={selectedIcon.name} className="w-8 h-8" />
                 </div>
                 <div className="flex-1">
                   <div className="font-medium">{selectedIcon.name}</div>
@@ -327,7 +327,7 @@ export function Icons() {
                             className="flex flex-col items-center cursor-pointer group"
                             title={`${icon.name}\nClick to copy SVG`}
                           >
-                            <div className="w-14 h-14 flex items-center justify-center rounded-xl hover:bg-secondary transition-colors relative">
+                            <div className="w-14 h-14 flex items-center justify-center rounded-xl hover:bg-secondary dark:bg-white/90 dark:hover:bg-white transition-colors relative">
                               <div dangerouslySetInnerHTML={{ __html: icon.svg }} className="w-9 h-9 [&>svg]:w-full [&>svg]:h-full" />
                               {copiedText === `icon-${icon.name}` && (
                                 <div className="absolute inset-0 flex items-center justify-center bg-green-500 rounded-xl">
@@ -387,19 +387,24 @@ export function Icons() {
                         className="group cursor-pointer bg-card border border-border rounded-2xl overflow-hidden hover:border-primary hover:shadow-lg transition-all"
                       >
                         {/* Preview Area */}
-                        <div className="h-32 p-4 flex items-center justify-center gap-3" style={{
-                          background: `linear-gradient(135deg, ${style.colors[0]}15, ${style.colors[1] || style.colors[0]}15)`
-                        }}>
+                        <div className="h-32 p-4 flex items-center justify-center gap-3 relative bg-white/50 dark:bg-white">
+                          {/* Light mode gradient overlay */}
+                          <div
+                            className="absolute inset-0 dark:hidden"
+                            style={{
+                              background: `linear-gradient(135deg, ${style.colors[0]}15, ${style.colors[1] || style.colors[0]}15)`
+                            }}
+                          />
                           {styleIcons.slice(0, 5).map((icon, i) => (
-                            <div key={i} className="w-10 h-10 flex items-center justify-center">
+                            <div key={i} className="w-10 h-10 flex items-center justify-center rounded-lg relative z-10">
                               <div dangerouslySetInnerHTML={{ __html: icon.svg }} className="w-7 h-7 [&>svg]:w-full [&>svg]:h-full" />
                             </div>
                           ))}
                           {styleIcons.length === 0 && (
-                            <span className="text-sm text-muted-foreground">No icons yet</span>
+                            <span className="text-sm text-muted-foreground relative z-10 dark:text-gray-500">No icons yet</span>
                           )}
                           {styleIcons.length > 5 && (
-                            <span className="text-sm text-muted-foreground">+{styleIcons.length - 5}</span>
+                            <span className="text-sm text-muted-foreground relative z-10 dark:text-gray-500">+{styleIcons.length - 5}</span>
                           )}
                         </div>
 
