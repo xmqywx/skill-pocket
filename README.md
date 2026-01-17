@@ -5,61 +5,57 @@
 <h1 align="center">SkillPocket</h1>
 
 <p align="center">
-  <strong>管理你的 Claude Skills，生成精美图标</strong>
+  <strong>Manage your Claude Skills & Generate Beautiful Icons</strong>
+</p>
+
+<p align="center">
+  <a href="README_CN.md">中文文档</a>
 </p>
 
 ---
 
-## 功能介绍
+## Features
 
-### 📦 管理 Skills
-- 自动扫描本地所有 Claude Skills
-- 搜索、收藏、分类管理
-- 标签系统快速筛选
+### 📦 Manage Skills
+- Auto-scan all local Claude Skills
+- Search, favorite, and organize with tags
+- Quick filter by categories
 
-### 🎨 生成图标 (特色功能!)
-- 让 Claude 帮你生成 SVG 图标
-- 支持多种设计风格
-- 一键复制使用
+### 🎨 Generate Icons (Highlight!)
+- Let Claude generate SVG icons for you
+- Multiple design styles supported
+- One-click copy to use
 
-### ⚙️ 个性化设置
-- 亮色/暗色主题
-- 中英文切换
-- 数据导入导出
+### ⚙️ Customization
+- Light / Dark / System theme
+- English / Chinese language
+- Import / Export data
 
 ---
 
-## 安装步骤
+## Installation
 
-### 第一步：下载 App
+### Step 1: Download the App
 
-| 系统 | 下载链接 |
-|------|----------|
-| macOS (M1/M2/M3) | [下载 .dmg](https://github.com/xmqywx/skill-pocket/releases) |
-| macOS (Intel) | [下载 .dmg](https://github.com/xmqywx/skill-pocket/releases) |
-| Windows | [下载 .msi](https://github.com/xmqywx/skill-pocket/releases) |
+| Platform | Download |
+|----------|----------|
+| macOS (Apple Silicon) | [Download .dmg](https://github.com/xmqywx/skill-pocket/releases) |
+| macOS (Intel) | [Download .dmg](https://github.com/xmqywx/skill-pocket/releases) |
+| Windows | [Download .msi](https://github.com/xmqywx/skill-pocket/releases) |
 
-### 第二步：安装图标生成 Skill (可选但推荐)
+### Step 2: Install Icon Generator Skill (Optional but Recommended)
 
-这一步让你可以用 Claude 生成自定义图标。
+This enables you to generate custom icons with Claude.
 
-**复制以下文件夹到你的 Skills 目录：**
-
-```
-本项目的 skills/icon-selector/
-     ↓ 复制到 ↓
-~/.claude/skills/icon-selector/
-```
-
-**快捷命令 (在终端执行)：**
+**Copy the skill folder to your Skills directory:**
 
 ```bash
 cp -r skills/icon-selector ~/.claude/skills/
 ```
 
-### 第三步：复制示例图标 (可选)
+### Step 3: Copy Sample Data (Optional)
 
-首次使用可以复制示例数据看看效果：
+See some demo icons on first launch:
 
 ```bash
 cp -r sample-data/icons ~/.claude/skill-pocket/
@@ -67,46 +63,66 @@ cp -r sample-data/icons ~/.claude/skill-pocket/
 
 ---
 
-## 使用方法
+## Usage
 
-### 管理 Skills
+### Managing Skills
 
-1. 打开 App，自动扫描你的 Skills
-2. 用搜索框查找
-3. 点击 ⭐ 收藏常用的
-4. 添加标签分类管理
+1. Open the app - it auto-scans your Skills
+2. Use search to find skills
+3. Click ⭐ to favorite
+4. Add tags to organize
 
-### 生成图标 (需要先安装 icon-selector skill)
+### Generating Icons
 
-1. 打开 Claude Code
-2. 告诉它你想要的图标，比如：
-   - "帮我设计一套电商 App 图标，蓝色渐变风格，20 个"
-   - "参考 https://dribbble.com/shots/xxx 帮我做一套图标"
-3. Claude 会自动生成并保存到 SkillPocket
-4. 在 App 的 **Icons** 页面查看和使用
+> Requires icon-selector skill installed (Step 2)
 
----
-
-## 常见问题
-
-**Q: Skills 没有显示？**
-> 确保你的 Skills 放在 `~/.claude/skills/` 或 `~/.claude/plugins/` 目录
-
-**Q: 图标功能不工作？**
-> 检查是否已安装 icon-selector skill 到 `~/.claude/skills/` 目录
-
-**Q: 如何备份数据？**
-> 设置页面 → 导出配置
+1. Open Claude Code
+2. Ask Claude to create icons:
+   - "Create a set of 20 e-commerce app icons, blue gradient style"
+   - "Design icons based on https://dribbble.com/shots/xxx"
+3. Claude generates and saves icons to SkillPocket
+4. View and copy icons in **Icons** tab
 
 ---
 
-## 相关链接
+## FAQ
 
-- [Claude Code Skills 官方文档](https://docs.anthropic.com/en/docs/claude-code/skills)
-- [SkillsMP.com](https://skillsmp.com/) - 63,000+ Skills 市场
+**Q: Skills not showing?**
+> Make sure your Skills are in `~/.claude/skills/` or `~/.claude/plugins/`
+
+**Q: Icon feature not working?**
+> Check if icon-selector skill is installed in `~/.claude/skills/`
+
+**Q: How to backup?**
+> Settings → Export Config
 
 ---
+
+## Build from Source
+
+```bash
+# Prerequisites: Node.js 18+, pnpm, Rust
+
+git clone https://github.com/xmqywx/skill-pocket.git
+cd skill-pocket
+pnpm install
+pnpm tauri dev      # Development
+pnpm tauri build    # Production
+```
+
+---
+
+## Links
+
+- [Claude Code Skills Docs](https://docs.anthropic.com/en/docs/claude-code/skills)
+- [SkillsMP.com](https://skillsmp.com/) - 63,000+ Skills Marketplace
+
+---
+
+## License
+
+MIT License - see [LICENSE](LICENSE)
 
 <p align="center">
-  Made with ❤️ for Claude 用户
+  Made with ❤️ for Claude users
 </p>
