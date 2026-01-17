@@ -1,0 +1,10 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Heart -->
+  <path d="M32 54L14 36C8 30 8 20 16 14C24 8 32 16 32 16C32 16 40 8 48 14C56 20 56 30 50 36L32 54Z" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Inner heart line -->
+  <path d="M32 46L20 34C16 30 16 24 20 20C24 16 28 18 32 22" stroke="#2D6A4F" stroke-width="1"/>
+  <!-- Accent dots -->
+  <circle cx="16" cy="14" r="2.5" fill="#74C365"/>
+  <circle cx="48" cy="14" r="2.5" fill="#74C365"/>
+  <circle cx="32" cy="54" r="2" fill="#74C365"/>
+</svg>

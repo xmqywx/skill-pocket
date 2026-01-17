@@ -16,17 +16,23 @@
     "all": "全部",
     "favorites": "收藏",
     "tags": "标签",
+    "recent": "最近",
     "recentlyUsed": "最近使用",
     "recentlyInstalled": "最近安装",
     "newTag": "新建标签",
     "official": "官方 Skills",
+    "refresh": "刷新",
+    "scanning": "正在扫描 Skills...",
+    "scanningDescription": "正在扫描 ~/.claude 目录中的 Skills",
+    "loadFailed": "加载失败",
+    "times": "{{count}}次",
     "empty": {
       "title": "还没有 Skills",
-      "description": "在 ~/.claude/skills 目录中创建你的第一个 Skill"
+      "description": "你的 Skills 将会显示在这里。去商店发现更多，或创建你自己的 Skill。"
     },
     "noMatch": {
       "title": "没有找到匹配的 Skills",
-      "description": "尝试其他搜索词或标签"
+      "description": "尝试调整搜索关键词或标签筛选"
     },
     "usedTimes": "使用 {{count}} 次"
   },
@@ -39,7 +45,11 @@
     "usedTimes": "已使用 {{count}} 次",
     "installedAt": "安装于",
     "description": "描述",
-    "content": "完整内容",
+    "content": "内容",
+    "noContent": "无内容",
+    "addTag": "添加标签",
+    "noMoreTags": "没有更多标签",
+    "openFileLocation": "打开文件位置",
     "actions": {
       "favorite": "收藏",
       "unfavorite": "取消收藏",
@@ -52,19 +62,35 @@
   "tags": {
     "editTitle": "编辑标签",
     "createTitle": "新建标签",
-    "name": "名称",
+    "name": "标签名称",
     "namePlaceholder": "输入标签名称",
-    "emoji": "图标",
-    "emojiPlaceholder": "选择一个 emoji",
+    "icon": "图标",
+    "iconPlaceholder": "搜索图标...",
+    "noIconMatch": "没有找到匹配的图标",
     "color": "颜色",
-    "parent": "父标签",
+    "colorCustom": "自定义:",
+    "colorPicker": "选择颜色",
+    "preview": "预览",
+    "parent": "父级标签 (可选)",
     "parentPlaceholder": "选择父标签（可选）",
     "noParent": "无（顶级标签）",
+    "noAvailableParent": "没有可用的父级标签",
     "cancel": "取消",
-    "save": "保存",
-    "create": "创建",
+    "save": "保存修改",
+    "create": "创建标签",
     "delete": "删除标签",
-    "deleteConfirm": "确定要删除标签 \"{{name}}\" 吗？此操作不可撤销。"
+    "deleteConfirm": "确定要删除标签 \"{{name}}\" 吗？此操作不可撤销。",
+    "colorPalettes": {
+      "red": "红色系",
+      "orange": "橙色系",
+      "amber": "琥珀系",
+      "green": "绿色系",
+      "teal": "青色系",
+      "blue": "蓝色系",
+      "purple": "紫色系",
+      "pink": "粉色系",
+      "gray": "灰色系"
+    }
   },
   "create": {
     "title": "创建 Skill",

@@ -1,14 +1,22 @@
 import { useTranslation } from 'react-i18next';
 import { Terminal, FolderOpen, ExternalLink } from 'lucide-react';
-import { openPath } from '@tauri-apps/plugin-opener';
+import { homeDir } from '@tauri-apps/api/path';
+import { openPath, revealItemInDir } from '@tauri-apps/plugin-opener';
 
 export function Create() {
   const { t } = useTranslation();
 
   const openSkillsDir = async () => {
     try {
-      const homeDir = await import('@tauri-apps/api/path').then(m => m.homeDir());
-      await openPath(`${homeDir}/.claude/skills`);
+      const home = await homeDir();
+      const skillsPath = `${home}/.claude/skills`;
+      console.log('Opening skills directory:', skillsPath);
+      // Use revealItemInDir to open in Finder, fallback to openPath
+      try {
+        await revealItemInDir(skillsPath);
+      } catch {
+        await openPath(skillsPath);
+      }
     } catch (e) {
       console.error('Failed to open skills directory:', e);
     }

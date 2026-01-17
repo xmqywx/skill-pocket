@@ -5,6 +5,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { MySkills } from '@/pages/MySkills';
 import { Store } from '@/pages/Store';
 import { Create } from '@/pages/Create';
+import { Icons } from '@/pages/Icons';
 import { Settings } from '@/pages/Settings';
 import { useAppStore } from '@/stores/appStore';
 
@@ -32,6 +33,15 @@ function AppInit() {
     }
   }, [theme]);
 
+  // Disable right-click context menu
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => document.removeEventListener('contextmenu', handleContextMenu);
+  }, []);
+
   return null;
 }
 
@@ -44,6 +54,7 @@ function App() {
           <Route index element={<MySkills />} />
           <Route path="store" element={<Store />} />
           <Route path="create" element={<Create />} />
+          <Route path="icons" element={<Icons />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { X, Plus, Trash2, ChevronDown, Search, Check } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
 import { useAppStore } from '@/stores/appStore';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
@@ -48,44 +49,45 @@ const iconOptions = [
 // Color palettes organized by hue
 const colorPalettes = {
   red: {
-    name: '红色系',
+    key: 'red',
     colors: ['#FEE2E2', '#FECACA', '#FCA5A5', '#F87171', '#EF4444', '#DC2626', '#B91C1C'],
   },
   orange: {
-    name: '橙色系',
+    key: 'orange',
     colors: ['#FFEDD5', '#FED7AA', '#FDBA74', '#FB923C', '#F97316', '#EA580C', '#C2410C'],
   },
   amber: {
-    name: '琥珀系',
+    key: 'amber',
     colors: ['#FEF3C7', '#FDE68A', '#FCD34D', '#FBBF24', '#F59E0B', '#D97706', '#B45309'],
   },
   green: {
-    name: '绿色系',
+    key: 'green',
     colors: ['#DCFCE7', '#BBF7D0', '#86EFAC', '#4ADE80', '#22C55E', '#16A34A', '#15803D'],
   },
   teal: {
-    name: '青色系',
+    key: 'teal',
     colors: ['#CCFBF1', '#99F6E4', '#5EEAD4', '#2DD4BF', '#14B8A6', '#0D9488', '#0F766E'],
   },
   blue: {
-    name: '蓝色系',
+    key: 'blue',
     colors: ['#DBEAFE', '#BFDBFE', '#93C5FD', '#60A5FA', '#3B82F6', '#2563EB', '#1D4ED8'],
   },
   purple: {
-    name: '紫色系',
+    key: 'purple',
     colors: ['#EDE9FE', '#DDD6FE', '#C4B5FD', '#A78BFA', '#8B5CF6', '#7C3AED', '#6D28D9'],
   },
   pink: {
-    name: '粉色系',
+    key: 'pink',
     colors: ['#FCE7F3', '#FBCFE8', '#F9A8D4', '#F472B6', '#EC4899', '#DB2777', '#BE185D'],
   },
   gray: {
-    name: '灰色系',
+    key: 'gray',
     colors: ['#F3F4F6', '#E5E7EB', '#D1D5DB', '#9CA3AF', '#6B7280', '#4B5563', '#374151'],
   },
 };
 
 export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalProps) {
+  const { t } = useTranslation();
   const { tags, addTag, updateTag, removeTag } = useAppStore();
 
   const [name, setName] = useState('');
@@ -175,7 +177,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
           <h2 className="text-lg font-semibold text-foreground">
-            {editingTag ? '编辑标签' : '新建标签'}
+            {editingTag ? t('tags.editTitle') : t('tags.createTitle')}
           </h2>
           <button
             onClick={onClose}
@@ -191,13 +193,13 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">
-              标签名称
+              {t('tags.name')}
             </label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="输入标签名称"
+              placeholder={t('tags.namePlaceholder')}
               className="w-full px-3 py-2 rounded-lg border border-input bg-background text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               autoFocus
             />
@@ -206,7 +208,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
           {/* Icon */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">
-              图标
+              {t('tags.icon')}
             </label>
             <div className="relative">
               <button
@@ -232,7 +234,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
                         type="text"
                         value={iconSearch}
                         onChange={(e) => setIconSearch(e.target.value)}
-                        placeholder="搜索图标..."
+                        placeholder={t('tags.iconPlaceholder')}
                         className="w-full pl-8 pr-3 py-1.5 rounded-md border border-input bg-background text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
                       />
                     </div>
@@ -262,7 +264,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
                       </div>
                     ) : (
                       <div className="text-center py-4 text-sm text-muted-foreground">
-                        没有找到匹配的图标
+                        {t('tags.noIconMatch')}
                       </div>
                     )}
                   </div>
@@ -274,7 +276,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
           {/* Preview */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">
-              预览
+              {t('tags.preview')}
             </label>
             <div className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 border border-border">
               <div
@@ -285,7 +287,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
               </div>
               <div className="flex-1 min-w-0">
                 <div className="font-medium text-foreground truncate">
-                  {name || '标签名称'}
+                  {name || t('tags.name')}
                 </div>
                 <div className="text-xs text-muted-foreground">
                   {selectedParentTag ? `${selectedParentTag.name} / ` : ''}{icon}
@@ -295,7 +297,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
                 className="px-2.5 py-1 rounded-md text-xs font-medium"
                 style={{ backgroundColor: `${color}20`, color }}
               >
-                标签
+                {t('mySkills.tags')}
               </span>
             </div>
           </div>
@@ -303,14 +305,14 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
           {/* Color */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">
-              颜色
+              {t('tags.color')}
             </label>
             <div className="space-y-3">
               {/* Color palettes */}
               <div className="grid grid-cols-3 gap-2">
                 {Object.entries(colorPalettes).map(([key, palette]) => (
                   <div key={key} className="space-y-1">
-                    <div className="text-xs text-muted-foreground px-0.5">{palette.name}</div>
+                    <div className="text-xs text-muted-foreground px-0.5">{t(`tags.colorPalettes.${palette.key}`)}</div>
                     <div className="flex gap-0.5">
                       {palette.colors.map((c) => (
                         <button
@@ -332,15 +334,20 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
 
               {/* Custom color input */}
               <div className="flex items-center gap-2 pt-1">
-                <div className="text-xs text-muted-foreground whitespace-nowrap">自定义:</div>
+                <div className="text-xs text-muted-foreground whitespace-nowrap">{t('tags.colorCustom')}</div>
                 <div className="relative flex-1">
                   <input
                     type="text"
                     value={color}
                     onChange={(e) => {
-                      const val = e.target.value;
-                      if (val.match(/^#[0-9A-Fa-f]{0,6}$/)) {
-                        setColor(val);
+                      let val = e.target.value;
+                      // Add # if not present
+                      if (val && !val.startsWith('#')) {
+                        val = '#' + val;
+                      }
+                      // Allow partial hex input for typing
+                      if (!val || val.match(/^#[0-9A-Fa-f]{0,6}$/)) {
+                        setColor(val || '#');
                       }
                     }}
                     placeholder="#000000"
@@ -351,13 +358,19 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
                     style={{ backgroundColor: color }}
                   />
                 </div>
-                <input
-                  type="color"
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
-                  className="w-8 h-8 rounded cursor-pointer border border-input"
-                  title="选择颜色"
-                />
+                <label className="relative w-10 h-10 rounded-lg cursor-pointer border-2 border-input hover:border-primary transition-colors overflow-hidden">
+                  <input
+                    type="color"
+                    value={color.length === 7 ? color : '#3B82F6'}
+                    onChange={(e) => setColor(e.target.value)}
+                    className="absolute inset-0 w-full h-full cursor-pointer opacity-0"
+                    title={t('tags.colorPicker')}
+                  />
+                  <div
+                    className="w-full h-full"
+                    style={{ backgroundColor: color }}
+                  />
+                </label>
               </div>
             </div>
           </div>
@@ -365,7 +378,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
           {/* Parent Tag - Custom Dropdown */}
           <div>
             <label className="block text-sm font-medium text-foreground mb-1.5">
-              父级标签 (可选)
+              {t('tags.parent')}
             </label>
             <div className="relative">
               <button
@@ -388,7 +401,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
                 ) : (
                   <>
                     <span className="w-4 h-4 rounded border border-dashed border-muted-foreground/50" />
-                    <span className="flex-1 text-left text-muted-foreground">无 (顶级标签)</span>
+                    <span className="flex-1 text-left text-muted-foreground">{t('tags.noParent')}</span>
                   </>
                 )}
                 <ChevronDown className={cn("h-4 w-4 text-muted-foreground transition-transform", showParentPicker && "rotate-180")} />
@@ -412,7 +425,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
                       {!parentId && <Check className="h-3 w-3 text-primary" />}
                     </span>
                     <span className={cn("flex-1", !parentId ? "text-foreground" : "text-muted-foreground")}>
-                      无 (顶级标签)
+                      {t('tags.noParent')}
                     </span>
                   </button>
 
@@ -453,7 +466,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
 
                   {availableParentTags.length === 0 && (
                     <div className="px-3 py-2 text-sm text-muted-foreground text-center">
-                      没有可用的父级标签
+                      {t('tags.noAvailableParent')}
                     </div>
                   )}
                 </div>
@@ -473,7 +486,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
               className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm text-destructive hover:bg-destructive/10 transition-colors"
             >
               <Trash2 className="h-4 w-4" />
-              删除标签
+              {t('tags.delete')}
             </button>
           ) : (
             <div />
@@ -484,7 +497,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
               onClick={onClose}
               className="px-4 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             >
-              取消
+              {t('tags.cancel')}
             </button>
             <button
               type="button"
@@ -492,7 +505,7 @@ export function TagEditorModal({ isOpen, onClose, editingTag }: TagEditorModalPr
               disabled={!name.trim()}
               className="flex items-center gap-1.5 px-4 py-2 rounded-md text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {editingTag ? '保存修改' : <><Plus className="h-4 w-4" />创建标签</>}
+              {editingTag ? t('tags.save') : <><Plus className="h-4 w-4" />{t('tags.create')}</>}
             </button>
           </div>
         </div>

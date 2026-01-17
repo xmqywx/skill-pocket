@@ -1,0 +1,15 @@
+[
+  {
+    "id": "demo-icons",
+    "name": "Demo Icons",
+    "styleId": "greenline",
+    "description": "Sample icons to demonstrate the icon generation feature",
+    "icons": [
+      { "name": "home", "concept": "Home page" },
+      { "name": "search", "concept": "Search" },
+      { "name": "heart", "concept": "Favorite" },
+      { "name": "settings", "concept": "Settings" }
+    ],
+    "createdAt": "2024-01-01T00:00:00Z"
+  }
+]

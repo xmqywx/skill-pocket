@@ -1,18 +1,29 @@
 import { NavLink } from 'react-router-dom';
-import { Package, Sparkles, Settings } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '@/lib/utils';
-
-const tabs = [
-  { to: '/', icon: Package, label: '我的Skills' },
-  // { to: '/store', icon: Store, label: '商店' }, // TODO: 以后完善
-  { to: '/create', icon: Sparkles, label: '创建' },
-];
+import { WindowControls, DragRegion } from './WindowControls';
+import { GreenlineIcon } from '@/components/common/GreenlineIcon';
 
 export function TabNav() {
+  const { t } = useTranslation();
+
+  const tabs = [
+    { to: '/', icon: 'mySkills' as const, labelKey: 'nav.mySkills' },
+    { to: '/create', icon: 'create' as const, labelKey: 'nav.create' },
+    { to: '/icons', icon: 'icons' as const, label: 'Icons' },
+  ];
+
   return (
-    <nav className="flex items-center gap-1 border-b border-border bg-card px-4">
-      <div className="flex items-center gap-1">
-        {tabs.map(({ to, icon: Icon, label }) => (
+    <nav className="flex items-center border-b border-border bg-card h-12">
+      {/* Window Controls */}
+      <WindowControls />
+
+      {/* Drag Region - Left */}
+      <DragRegion className="flex-1 h-full" />
+
+      {/* Navigation Tabs */}
+      <div className="flex items-center gap-1 h-full">
+        {tabs.map(({ to, icon, labelKey, label }) => (
           <NavLink
             key={to}
             to={to}
@@ -26,24 +37,28 @@ export function TabNav() {
               )
             }
           >
-            <Icon className="h-4 w-4" />
-            {label}
+            <GreenlineIcon name={icon} size={20} />
+            {labelKey ? t(labelKey) : label}
           </NavLink>
         ))}
       </div>
-      <div className="flex-1" />
+
+      {/* Drag Region - Right */}
+      <DragRegion className="flex-1 h-full" />
+
+      {/* Settings */}
       <NavLink
         to="/settings"
         className={({ isActive }) =>
           cn(
-            'p-2 rounded-md transition-colors',
+            'p-2 mr-4 rounded-md transition-colors',
             isActive
               ? 'bg-secondary text-foreground'
               : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
           )
         }
       >
-        <Settings className="h-5 w-5" />
+        <GreenlineIcon name="settings" size={24} />
       </NavLink>
     </nav>
   );

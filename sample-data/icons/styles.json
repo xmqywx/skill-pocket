@@ -1,0 +1,14 @@
+[
+  {
+    "id": "greenline",
+    "name": "Greenline Industrial Icons",
+    "description": "Industrial, technical drawing style icons with precise thin strokes. Deep green outlines with lime green accent dots.",
+    "sourceUrl": "https://dribbble.com/shots/25938348-Greenline-Icons",
+    "category": "outlined",
+    "colors": ["#2D6A4F", "#74C365"],
+    "effects": ["Stroke width 1.5px", "Precise geometry", "Lime green dot accents"],
+    "characteristics": ["Industrial", "Technical", "Precise", "Minimal"],
+    "prompt": "Create a 64x64 SVG icon with deep green (#2D6A4F) strokes at 1.5px width. Add small lime green (#74C365) filled circles as accent dots at key points.",
+    "createdAt": "2024-01-01T00:00:00Z"
+  }
+]

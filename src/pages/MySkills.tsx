@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Search, LayoutGrid, List, FolderOpen, Tag as TagIcon, ChevronRight, ChevronDown, Heart, Clock, Loader2, AlertCircle, RefreshCw, Plus, Pencil } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/stores/appStore';
 import { cn } from '@/lib/utils';
 import { DynamicIcon } from '@/components/common/DynamicIcon';
+import { GreenlineIcon } from '@/components/common/GreenlineIcon';
 import { TagEditorModal } from '@/components/tags/TagEditorModal';
 import { SkillDetailModal } from '@/components/skills/SkillDetailModal';
 import type { Tag } from '@/types/tag';
 import type { Skill } from '@/types/skill';
 
 export function MySkills() {
+  const { t } = useTranslation();
   const { skills, tags, searchQuery, setSearchQuery, viewMode, setViewMode, selectedTagId, setSelectedTagId, updateSkill, loadSkills, isLoading, loadError } = useAppStore();
   const [expandedTags, setExpandedTags] = useState<Set<string>>(new Set(['web', 'ai']));
 
@@ -104,8 +106,8 @@ export function MySkills() {
                 : 'text-foreground hover:bg-secondary'
             )}
           >
-            <FolderOpen className="h-4 w-4" />
-            <span>全部</span>
+            <GreenlineIcon name="folder" size={16} />
+            <span>{t('mySkills.all')}</span>
             <span className="ml-auto text-xs text-muted-foreground">({skills.length})</span>
           </button>
 
@@ -119,8 +121,8 @@ export function MySkills() {
                 : 'text-foreground hover:bg-secondary'
             )}
           >
-            <Heart className="h-4 w-4" />
-            <span>收藏</span>
+            <GreenlineIcon name="heart" size={16} />
+            <span>{t('mySkills.favorites')}</span>
             <span className="ml-auto text-xs text-muted-foreground">({favoriteCount})</span>
           </button>
 
@@ -134,16 +136,16 @@ export function MySkills() {
                 : 'text-foreground hover:bg-secondary'
             )}
           >
-            <Clock className="h-4 w-4" />
-            <span>最近</span>
+            <GreenlineIcon name="clock" size={16} />
+            <span>{t('mySkills.recent')}</span>
           </button>
         </div>
 
         {/* Tags */}
         <div className="px-3 py-2 flex-1 overflow-y-auto">
           <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground uppercase tracking-wider mb-2">
-            <TagIcon className="h-3 w-3" />
-            标签
+            <GreenlineIcon name="tags" size={12} />
+            {t('mySkills.tags')}
           </div>
           <div className="space-y-0.5">
             {rootTags.map((tag) => {
@@ -170,9 +172,9 @@ export function MySkills() {
                     >
                       {hasChildren ? (
                         isExpanded ? (
-                          <ChevronDown className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                          <GreenlineIcon name="chevronDown" size={12} className="flex-shrink-0 opacity-60" />
                         ) : (
-                          <ChevronRight className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                          <GreenlineIcon name="chevronRight" size={12} className="flex-shrink-0 opacity-60" />
                         )
                       ) : (
                         <span className="w-3 flex-shrink-0" />
@@ -190,7 +192,7 @@ export function MySkills() {
                       }}
                       className="p-1 rounded opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
                     >
-                      <Pencil className="h-3 w-3" />
+                      <GreenlineIcon name="edit" size={12} />
                     </button>
                   </div>
                   {isExpanded && hasChildren && (
@@ -221,7 +223,7 @@ export function MySkills() {
                               }}
                               className="p-1 rounded opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-foreground hover:bg-secondary transition-all"
                             >
-                              <Pencil className="h-3 w-3" />
+                              <GreenlineIcon name="edit" size={12} />
                             </button>
                           </div>
                         );
@@ -240,8 +242,8 @@ export function MySkills() {
             onClick={() => openTagEditor()}
             className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
           >
-            <Plus className="h-4 w-4" />
-            新建标签
+            <GreenlineIcon name="plus" size={16} />
+            {t('mySkills.newTag')}
           </button>
         </div>
       </aside>
@@ -251,10 +253,12 @@ export function MySkills() {
         {/* Toolbar */}
         <div className="flex items-center gap-3 p-4 border-b border-border">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2">
+              <GreenlineIcon name="search" size={16} />
+            </span>
             <input
               type="text"
-              placeholder="搜索 skills..."
+              placeholder={t('mySkills.searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 rounded-lg border border-input bg-background text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
@@ -270,7 +274,7 @@ export function MySkills() {
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
-              <LayoutGrid className="h-4 w-4" />
+              <GreenlineIcon name="grid" size={16} />
             </button>
             <button
               onClick={() => setViewMode('list')}
@@ -281,7 +285,7 @@ export function MySkills() {
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
-              <List className="h-4 w-4" />
+              <GreenlineIcon name="list" size={16} />
             </button>
           </div>
           <button
@@ -289,8 +293,8 @@ export function MySkills() {
             disabled={isLoading}
             className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border text-sm text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors disabled:opacity-50"
           >
-            <RefreshCw className={cn("h-4 w-4", isLoading && "animate-spin")} />
-            刷新
+            <GreenlineIcon name="refresh" size={16} className={cn(isLoading && "animate-spin")} />
+            {t('mySkills.refresh')}
           </button>
         </div>
 
@@ -298,19 +302,19 @@ export function MySkills() {
         <div className="flex-1 overflow-auto p-4">
           {isLoading ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <Loader2 className="h-12 w-12 text-primary animate-spin mb-4" />
+              <GreenlineIcon name="loader" size={48} className="animate-spin mb-4" />
               <h3 className="text-lg font-medium text-foreground mb-2">
-                正在扫描 Skills...
+                {t('mySkills.scanning')}
               </h3>
               <p className="text-sm text-muted-foreground">
-                正在扫描 ~/.claude 目录中的 Skills
+                {t('mySkills.scanningDescription')}
               </p>
             </div>
           ) : loadError ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <AlertCircle className="h-16 w-16 text-destructive/50 mb-4" />
+              <GreenlineIcon name="alert" size={64} className="opacity-50 mb-4" />
               <h3 className="text-lg font-medium text-foreground mb-2">
-                加载失败
+                {t('mySkills.loadFailed')}
               </h3>
               <p className="text-sm text-muted-foreground max-w-sm mb-4">
                 {loadError}
@@ -319,20 +323,20 @@ export function MySkills() {
                 onClick={() => loadSkills()}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >
-                <RefreshCw className="h-4 w-4" />
-                重试
+                <GreenlineIcon name="refresh" size={16} />
+                {t('common.retry')}
               </button>
             </div>
           ) : sortedSkills.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
-              <FolderOpen className="h-16 w-16 text-muted-foreground/50 mb-4" />
+              <GreenlineIcon name="folder" size={64} className="opacity-50 mb-4" />
               <h3 className="text-lg font-medium text-foreground mb-2">
-                {skills.length === 0 ? '还没有 Skills' : '没有找到匹配的 Skills'}
+                {skills.length === 0 ? t('mySkills.empty.title') : t('mySkills.noMatch.title')}
               </h3>
               <p className="text-sm text-muted-foreground max-w-sm">
                 {skills.length === 0
-                  ? '你的 Skills 将会显示在这里。去商店发现更多，或创建你自己的 Skill。'
-                  : '尝试调整搜索关键词或标签筛选'}
+                  ? t('mySkills.empty.description')
+                  : t('mySkills.noMatch.description')}
               </p>
             </div>
           ) : (
@@ -362,7 +366,7 @@ export function MySkills() {
                         : 'text-muted-foreground opacity-0 group-hover:opacity-100 hover:bg-secondary'
                     )}
                   >
-                    <Heart className={cn('h-4 w-4', skill.isFavorite && 'fill-current')} />
+                    <GreenlineIcon name={skill.isFavorite ? "heart" : "heartOutline"} size={16} />
                   </button>
 
                   {/* Info */}
@@ -391,7 +395,7 @@ export function MySkills() {
                           })}
                         </div>
                         <span className="text-xs text-muted-foreground">
-                          {skill.useCount}次
+                          {t('mySkills.times', { count: skill.useCount })}
                         </span>
                       </div>
                     )}
@@ -413,7 +417,7 @@ export function MySkills() {
                         ) : null;
                       })}
                       <span className="text-xs text-muted-foreground">
-                        {skill.useCount}次
+                        {t('mySkills.times', { count: skill.useCount })}
                       </span>
                     </div>
                   )}

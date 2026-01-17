@@ -1,21 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Key, Folder, Palette, Globe, Download, Upload, Check, Eye, EyeOff, Moon, Sun, Monitor, CheckCircle, XCircle } from 'lucide-react';
 import { useAppStore } from '@/stores/appStore';
 import { cn } from '@/lib/utils';
+import { GreenlineIcon } from '@/components/common/GreenlineIcon';
 
 export function Settings() {
   const { t, i18n } = useTranslation();
   const {
-    claudeApiKey, setClaudeApiKey,
     theme, setTheme,
     language, setLanguage,
     exportData, importData
   } = useAppStore();
 
-  const [apiKeyInput, setApiKeyInput] = useState(claudeApiKey);
-  const [showApiKey, setShowApiKey] = useState(false);
-  const [saved, setSaved] = useState(false);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -38,12 +34,6 @@ export function Settings() {
       i18n.changeLanguage(language);
     }
   }, [language, i18n]);
-
-  const handleSaveApiKey = () => {
-    setClaudeApiKey(apiKeyInput);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
-  };
 
   const handleLanguageChange = (lang: 'zh' | 'en') => {
     setLanguage(lang);
@@ -103,9 +93,9 @@ export function Settings() {
   };
 
   const themeOptions = [
-    { id: 'light' as const, icon: Sun, label: t('settings.theme.light') },
-    { id: 'dark' as const, icon: Moon, label: t('settings.theme.dark') },
-    { id: 'system' as const, icon: Monitor, label: t('settings.theme.system') },
+    { id: 'light' as const, icon: 'sun' as const, label: t('settings.theme.light') },
+    { id: 'dark' as const, icon: 'moon' as const, label: t('settings.theme.dark') },
+    { id: 'system' as const, icon: 'monitor' as const, label: t('settings.theme.system') },
   ];
 
   return (
@@ -116,59 +106,10 @@ export function Settings() {
           <p className="text-muted-foreground">{t('settings.subtitle')}</p>
         </div>
 
-        {/* Claude API Key */}
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Key className="h-5 w-5 text-muted-foreground" />
-            <h2 className="text-lg font-medium text-foreground">{t('settings.apiKey.title')}</h2>
-          </div>
-          <p className="text-sm text-muted-foreground">
-            {t('settings.apiKey.description')}
-          </p>
-          <div className="flex gap-2">
-            <div className="relative flex-1">
-              <input
-                type={showApiKey ? 'text' : 'password'}
-                value={apiKeyInput}
-                onChange={(e) => setApiKeyInput(e.target.value)}
-                placeholder={t('settings.apiKey.placeholder')}
-                className="w-full px-4 py-2 pr-10 rounded-lg border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-              />
-              <button
-                onClick={() => setShowApiKey(!showApiKey)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {showApiKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-              </button>
-            </div>
-            <button
-              onClick={handleSaveApiKey}
-              className={cn(
-                'px-4 py-2 rounded-lg text-sm transition-colors flex items-center gap-2',
-                saved
-                  ? 'bg-green-500 text-white'
-                  : 'bg-primary text-primary-foreground hover:bg-primary/90'
-              )}
-            >
-              {saved ? (
-                <>
-                  <Check className="h-4 w-4" />
-                  {t('settings.apiKey.saved')}
-                </>
-              ) : (
-                t('settings.apiKey.save')
-              )}
-            </button>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            {t('settings.apiKey.getKey')}: <a href="https://console.anthropic.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">console.anthropic.com</a>
-          </p>
-        </section>
-
         {/* Skills Directory */}
         <section className="space-y-4">
           <div className="flex items-center gap-2">
-            <Folder className="h-5 w-5 text-muted-foreground" />
+            <GreenlineIcon name="folder" size={20} />
             <h2 className="text-lg font-medium text-foreground">{t('settings.skillsDir.title')}</h2>
           </div>
           <div className="space-y-2">
@@ -177,7 +118,7 @@ export function Settings() {
                 <p className="text-sm font-medium text-foreground font-mono">~/.claude/skills/</p>
                 <p className="text-xs text-muted-foreground">{t('settings.skillsDir.personal')}</p>
               </div>
-              <button className="text-sm text-primary hover:underline">{t('settings.skillsDir.modify')}</button>
+              <span className="text-xs text-muted-foreground px-2 py-1 rounded bg-secondary">{t('settings.skillsDir.autoDetect')}</span>
             </div>
             <div className="flex items-center justify-between p-3 rounded-lg border border-border bg-card">
               <div>
@@ -192,11 +133,11 @@ export function Settings() {
         {/* Theme */}
         <section className="space-y-4">
           <div className="flex items-center gap-2">
-            <Palette className="h-5 w-5 text-muted-foreground" />
+            <GreenlineIcon name="sun" size={20} />
             <h2 className="text-lg font-medium text-foreground">{t('settings.theme.title')}</h2>
           </div>
           <div className="flex gap-2">
-            {themeOptions.map(({ id, icon: Icon, label }) => (
+            {themeOptions.map(({ id, icon, label }) => (
               <button
                 key={id}
                 onClick={() => setTheme(id)}
@@ -207,7 +148,7 @@ export function Settings() {
                     : 'border-border hover:bg-secondary'
                 )}
               >
-                <Icon className="h-4 w-4" />
+                <GreenlineIcon name={icon} size={18} />
                 {label}
               </button>
             ))}
@@ -217,7 +158,7 @@ export function Settings() {
         {/* Language */}
         <section className="space-y-4">
           <div className="flex items-center gap-2">
-            <Globe className="h-5 w-5 text-muted-foreground" />
+            <GreenlineIcon name="globe" size={20} />
             <h2 className="text-lg font-medium text-foreground">{t('settings.language.title')}</h2>
           </div>
           <div className="flex gap-2">
@@ -254,14 +195,14 @@ export function Settings() {
               onClick={handleImport}
               className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm hover:bg-secondary transition-colors"
             >
-              <Upload className="h-4 w-4" />
+              <GreenlineIcon name="upload" size={16} />
               {t('settings.data.import')}
             </button>
             <button
               onClick={handleExport}
               className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-sm hover:bg-secondary transition-colors"
             >
-              <Download className="h-4 w-4" />
+              <GreenlineIcon name="download" size={16} />
               {t('settings.data.export')}
             </button>
             <input
@@ -301,11 +242,7 @@ export function Settings() {
           'fixed bottom-4 right-4 flex items-center gap-2 px-4 py-3 rounded-lg shadow-lg text-sm animate-in slide-in-from-bottom-4 duration-300',
           toast.type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
         )}>
-          {toast.type === 'success' ? (
-            <CheckCircle className="h-4 w-4" />
-          ) : (
-            <XCircle className="h-4 w-4" />
-          )}
+          <GreenlineIcon name={toast.type === 'success' ? 'check' : 'x'} size={16} />
           {toast.message}
         </div>
       )}
