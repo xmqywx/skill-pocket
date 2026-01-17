@@ -1,90 +1,95 @@
 <svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Main gradient - purple to blue -->
+    <!-- Premium gradient - deep purple to vibrant violet -->
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8B5CF6"/>
-      <stop offset="50%" style="stop-color:#6366F1"/>
-      <stop offset="100%" style="stop-color:#3B82F6"/>
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="100%" style="stop-color:#4F46E5"/>
     </linearGradient>
-    <!-- Highlight gradient -->
+
+    <!-- Subtle inner glow -->
+    <linearGradient id="innerGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A78BFA;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Pocket gradient - frosted glass effect -->
     <linearGradient id="pocketGradient" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.95"/>
-      <stop offset="100%" style="stop-color:#F1F5F9;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#F8FAFC;stop-opacity:0.85"/>
     </linearGradient>
-    <!-- Sparkle gradient -->
-    <linearGradient id="sparkleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FBBF24"/>
-      <stop offset="100%" style="stop-color:#F59E0B"/>
-    </linearGradient>
+
+    <!-- Shadow for depth -->
+    <filter id="pocketShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="20" flood-color="#4F46E5" flood-opacity="0.3"/>
+    </filter>
+
+    <!-- Glow for the orb -->
+    <radialGradient id="orbGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#C4B5FD"/>
+      <stop offset="70%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </radialGradient>
+
+    <filter id="orbGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- Background rounded square -->
-  <rect x="0" y="0" width="1024" height="1024" rx="220" fill="url(#bgGradient)"/>
+  <!-- Background - smooth rounded square -->
+  <rect x="0" y="0" width="1024" height="1024" rx="228" fill="url(#bgGradient)"/>
 
-  <!-- Inner shadow/glow effect -->
-  <rect x="40" y="40" width="944" height="944" rx="190" fill="none" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
+  <!-- Inner highlight -->
+  <rect x="0" y="0" width="1024" height="512" rx="228" fill="url(#innerGlow)"/>
 
-  <!-- Pocket shape - main body -->
-  <path d="M240 380
-           C240 340, 270 310, 310 310
-           L714 310
-           C754 310, 784 340, 784 380
-           L784 720
-           C784 760, 754 790, 714 790
-           L310 790
-           C270 790, 240 760, 240 720
-           Z"
-        fill="url(#pocketGradient)"
-        stroke="white"
-        stroke-width="4"
-        stroke-opacity="0.5"/>
+  <!-- Minimalist pocket shape -->
+  <g filter="url(#pocketShadow)">
+    <!-- Pocket body -->
+    <path d="M272 340
+             L272 700
+             C272 744, 308 780, 352 780
+             L672 780
+             C716 780, 752 744, 752 700
+             L752 340
+             C752 296, 716 260, 672 260
+             L352 260
+             C308 260, 272 296, 272 340Z"
+          fill="url(#pocketGradient)"/>
 
-  <!-- Pocket fold/flap -->
-  <path d="M240 420
-           L784 420
-           L784 380
-           C784 340, 754 310, 714 310
-           L310 310
-           C270 310, 240 340, 240 380
-           Z"
-        fill="white"
-        fill-opacity="0.3"/>
+    <!-- Pocket opening - subtle fold line -->
+    <path d="M272 380
+             C272 380, 400 420, 512 420
+             C624 420, 752 380, 752 380
+             L752 340
+             C752 296, 716 260, 672 260
+             L352 260
+             C308 260, 272 296, 272 340
+             Z"
+          fill="white"
+          fill-opacity="0.5"/>
 
-  <!-- Pocket opening line -->
-  <path d="M280 420 L744 420"
-        stroke="#6366F1"
-        stroke-width="8"
-        stroke-linecap="round"
-        stroke-opacity="0.6"/>
-
-  <!-- Main sparkle/star (skill symbol) -->
-  <g transform="translate(512, 580)">
-    <!-- 4-point star -->
-    <path d="M0 -100
-             C10 -40, 40 -10, 100 0
-             C40 10, 10 40, 0 100
-             C-10 40, -40 10, -100 0
-             C-40 -10, -10 -40, 0 -100 Z"
-          fill="url(#sparkleGradient)"/>
-    <!-- Inner glow -->
-    <circle cx="0" cy="0" r="30" fill="white" fill-opacity="0.8"/>
+    <!-- Pocket top edge highlight -->
+    <path d="M300 380 C300 380, 420 415, 512 415 C604 415, 724 380, 724 380"
+          stroke="white"
+          stroke-width="3"
+          stroke-linecap="round"
+          fill="none"
+          opacity="0.8"/>
   </g>
 
-  <!-- Small sparkles -->
-  <g fill="#FBBF24">
-    <!-- Top right sparkle -->
-    <path transform="translate(650, 500) scale(0.35)"
-          d="M0 -100 C10 -40, 40 -10, 100 0 C40 10, 10 40, 0 100 C-10 40, -40 10, -100 0 C-40 -10, -10 -40, 0 -100 Z"/>
-    <!-- Top left sparkle -->
-    <path transform="translate(380, 520) scale(0.25)"
-          d="M0 -100 C10 -40, 40 -10, 100 0 C40 10, 10 40, 0 100 C-10 40, -40 10, -100 0 C-40 -10, -10 -40, 0 -100 Z"/>
-    <!-- Bottom sparkle -->
-    <path transform="translate(590, 700) scale(0.2)"
-          d="M0 -100 C10 -40, 40 -10, 100 0 C40 10, 10 40, 0 100 C-10 40, -40 10, -100 0 C-40 -10, -10 -40, 0 -100 Z"/>
+  <!-- Glowing orb - representing "skill/magic" -->
+  <g filter="url(#orbGlow)">
+    <circle cx="512" cy="580" r="85" fill="url(#orbGradient)"/>
+    <!-- Inner shine -->
+    <circle cx="490" cy="555" r="25" fill="white" fill-opacity="0.6"/>
   </g>
 
-  <!-- Floating dots for magic effect -->
-  <circle cx="340" cy="620" r="8" fill="white" fill-opacity="0.6"/>
-  <circle cx="700" cy="650" r="6" fill="white" fill-opacity="0.5"/>
-  <circle cx="420" cy="720" r="5" fill="white" fill-opacity="0.4"/>
+  <!-- Subtle floating particles -->
+  <circle cx="400" cy="520" r="6" fill="white" fill-opacity="0.7"/>
+  <circle cx="620" cy="540" r="4" fill="white" fill-opacity="0.5"/>
+  <circle cx="440" cy="660" r="5" fill="white" fill-opacity="0.4"/>
+  <circle cx="590" cy="680" r="3" fill="white" fill-opacity="0.3"/>
 </svg>
