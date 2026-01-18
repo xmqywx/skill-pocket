@@ -40,7 +40,7 @@ jobs:
           node-version: lts/*
 
       - name: Install pnpm
-        run: npm install -g pnpm@9
+        run: npm install -g pnpm@8
 
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable
