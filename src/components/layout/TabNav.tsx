@@ -11,6 +11,7 @@ export function TabNav() {
     { to: '/', icon: 'mySkills' as const, labelKey: 'nav.mySkills' },
     { to: '/create', icon: 'create' as const, labelKey: 'nav.create' },
     { to: '/icons', icon: 'icons' as const, label: 'Icons' },
+    { to: '/ui-designs', icon: 'uiDesigns' as const, label: 'UI Designs' },
   ];
 
   return (

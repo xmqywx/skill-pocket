@@ -1,0 +1,19 @@
+[
+  {
+    "id": "words-game-playful",
+    "name": "Words Game - Playful Gradient",
+    "category": "Game",
+    "description": "A playful, vibrant mobile game UI with bright yellow cards, teal backgrounds, and rounded letter tiles. Perfect for word games and casual puzzle apps.",
+    "sourceUrl": "https://dribbble.com/shots/24122314-Words-Game-Mobile-App",
+    "screenshot": "screenshots/words-game-playful.png",
+    "promptFile": "prompts/words-game-playful.md",
+    "colors": {
+      "primary": "#FFD93D",
+      "secondary": "#B8E4D8",
+      "background": "#F5F5F5",
+      "text": "#2D3436"
+    },
+    "tags": ["Game", "Playful", "Mobile", "Colorful", "Cards", "Yellow"],
+    "createdAt": "2026-01-17T15:00:00Z"
+  }
+]

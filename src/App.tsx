@@ -6,6 +6,7 @@ import { MySkills } from '@/pages/MySkills';
 import { Store } from '@/pages/Store';
 import { Create } from '@/pages/Create';
 import { Icons } from '@/pages/Icons';
+import { UIDesigns } from '@/pages/UIDesigns';
 import { Settings } from '@/pages/Settings';
 import { useAppStore } from '@/stores/appStore';
 
@@ -55,6 +56,7 @@ function App() {
           <Route path="store" element={<Store />} />
           <Route path="create" element={<Create />} />
           <Route path="icons" element={<Icons />} />
+          <Route path="ui-designs" element={<UIDesigns />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>

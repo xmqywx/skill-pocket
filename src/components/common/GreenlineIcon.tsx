@@ -333,6 +333,23 @@ export const GreenlineIcons = {
   <circle cx="48" cy="14" r="2.5" fill="#74C365"/>
   <circle cx="32" cy="54" r="2" fill="#74C365"/>
 </svg>`,
+
+  uiDesigns: `<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="8" width="48" height="48" rx="4" stroke="#2D6A4F" stroke-width="1.5"/>
+  <rect x="14" y="14" width="16" height="12" rx="2" stroke="#2D6A4F" stroke-width="1.5"/>
+  <rect x="34" y="14" width="16" height="20" rx="2" stroke="#2D6A4F" stroke-width="1.5"/>
+  <rect x="14" y="30" width="16" height="20" rx="2" stroke="#2D6A4F" stroke-width="1.5"/>
+  <rect x="34" y="38" width="16" height="12" rx="2" stroke="#2D6A4F" stroke-width="1.5"/>
+  <path d="M18 18H26" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round"/>
+  <path d="M18 22H24" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round"/>
+  <path d="M38 18H46" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round"/>
+  <path d="M38 22H44" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round"/>
+  <path d="M38 26H42" stroke="#2D6A4F" stroke-width="1" stroke-linecap="round"/>
+  <circle cx="8" cy="8" r="2.5" fill="#74C365"/>
+  <circle cx="56" cy="56" r="2.5" fill="#74C365"/>
+  <circle cx="56" cy="8" r="2" fill="#74C365"/>
+  <circle cx="8" cy="56" r="2" fill="#74C365"/>
+</svg>`,
 };
 
 interface GreenlineIconProps {
